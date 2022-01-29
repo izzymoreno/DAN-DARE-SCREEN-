@@ -1,0 +1,328 @@
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html" charset="windows-1251">
+  <title>Ремейк на Cauldron</title>
+  <style>
+   h1 {
+    font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */ 
+    font-size: 250%; /* Размер шрифта в процентах */ 
+   color: white;
+   } 
+   p {
+    font-family: Verdana, Arial, Helvetica, sans-serif; 
+    font-size: 11pt; /* Размер шрифта в пунктах */ 
+    color: red; /* Цвет */   
+   }
+  </style>
+  <style>
+  body {background-color: black;}
+  </style>
+  <style>
+    #Dan
+	{
+    width:24px;
+    height:23px;
+    background: black;
+    margin: -11.5px 0 0 -12px;
+    position:relative;
+    transition: top 0.5s, left 0.5s;
+    -webkit-transition: top 0.5s, left 0.5s;
+    }
+	</style>
+	</head>
+<div id='Dan' style='position : relative; left : 111px; top : 111px;'><img name='Dan' src='Images/Dan1_5.png' title='Dan'></div>
+<body onload="init()">
+<script type="text/javascript">
+
+
+/**
+ * Ремейк игры DAN DARE - 2 
+ *
+ * 
+ *
+ */
+ 
+var 
+  
+i = 0;
+maxstars=200;
+objnum=0;
+timer1=1;
+timer2=90;
+kolkadr=2;
+changelight=1;
+Bitmap=new Array(kolkadr);
+Resize();
+Bitmap=new Array(kolkadr);
+  
+ObjectX=new Array(0,0,6,26,46,360,340,757,737,717,402,422,13,33,53,724,744,764);
+ObjectY=new Array(0,0,147,163,171,151,159,147,163,171,151,159,147,163,171,171,163,147);
+DirFileName=new Array("Dandare1/Stars/Star1","Dandare1/Stars/Star2","Dandare1/Textures/Mayak1",
+"Dandare1/Textures/Mayak2","Dandare1/Textures/Mayak3","Dandare1/Textures/Anthena1","Dandare1/Textures/Anthena2",
+"Dandare1/Textures/Cube","Dandare1/Textures/Tube","Dandare1/Textures/Mayak/Mayak");
+
+function CreateGround(objnum1,objnum2,objnum3,objnum4,x1,y1,x2,y2,step)
+{
+//Далее создаётся фундамент
+for (i=objnum1; i<=objnum2; i=i+1)
+   {
+   ApiImageHTML="<DIV id='picground"+i+"' STYLE='position: absolute; left:"+x1+"; top:"+y1+"'>"+
+   "<IMG name='ground"+i+"' src='Images/ZX-Spectrum/"+DirFileName[7]+".bmp'>"+
+   "</DIV>";
+   x1=x1+step;
+   document.write(ApiImageHTML);
+   }
+for (i=objnum3; i<=objnum4; i=i+1)
+   {
+   ApiImageHTML="<DIV id='picground"+i+"' STYLE='position: absolute; left:"+x2+"; top:"+y2+"'>"+
+   "<IMG name='ground"+i+"' src='Images/ZX-Spectrum/"+DirFileName[8]+".bmp'>"+
+   "</DIV>";
+   x2=x2+step;
+   document.write(ApiImageHTML);
+   }
+}
+
+function CreateStars()
+{
+for (i=objnum; i<=maxstars; i=i+1)
+   {
+   if(i%2==0)
+      {
+      DivLeft=xminbrowser+Math.round(Math.random()*xmaxbrowser);
+      DivTop=yminbrowser+Math.round(Math.random()*256);
+      ApiImageHTML="<DIV id='picstar"+i+"' STYLE='position: absolute; left:"+DivLeft+"; top:"+DivTop+"'>"+
+      "<IMG name='star"+i+"' src='Images/ZX-Spectrum/"+DirFileName[0]+".bmp'>"+
+      "</DIV>";      
+      document.write(ApiImageHTML);
+      }
+      else     
+      {
+      DivLeft=xminbrowser+Math.round(Math.random()*xmaxbrowser);
+      DivTop=yminbrowser+Math.round(Math.random()*256);
+      ApiImageHTML="<DIV id='picstar"+i+"' STYLE='position: absolute; left:"+DivLeft+"; top:"+DivTop+"'>"+
+      "<IMG name='star"+i+"' src='Images/ZX-Spectrum/"+DirFileName[1]+".bmp'>"+
+      "</DIV>";      
+      document.write(ApiImageHTML);
+      }
+   }
+}
+
+function LoadImages(objnum,mass1,mass2)
+{
+for (i=mass1; i<=mass2; i=i+1)
+   {
+   Bitmap[i] = new Image();
+   Bitmap[i].src="Images/ZX-Spectrum/"+DirFileName[objnum]+i+".bmp";
+//   alert('Имя файла='+DirFileName[objnum]+i);
+//   alert('Номер ячейки='+i);
+   }
+}
+
+function CreateTable(Left1,Top1,TableWidth,TableHeight)
+{
+document.fgColor="yellow";
+ApITable="<TABLE name='table1' STYLE='position: absolute; Left:"+Left1+"; Top:"+Top1+
+"' bordercolor=white border=0 cellspacing=0 cellpadding=0 width:"+TableWidth+" height:"+TableHeight+">"+
+"<TR>"+
+"<TD><IMG name='ugol1' src='Images/ZX-Spectrum/Dandare1/Table/UpLeftAngle.bmp' width=4 height=4></TD>"+
+"<TD><IMG name='ramka1' src='Images/ZX-Spectrum/Dandare1/Table/UpHorizontLine.bmp' width="+TableWidth+" height=4></TD>"+
+"<TD><IMG name='ugol2' src='Images/ZX-Spectrum/Dandare1/Table/UpRightAngle.bmp' width=4 height=4></TD>"+
+"</TR>"+
+"<TR>"+
+"<TD><IMG name='ugol3' src='Images/ZX-Spectrum/Dandare1/Table/LeftVerticalLine.bmp' width=4 height="+TableHeight+"></TD>"+
+"<TD align=center>FoxSoft Inc. Copyright 2017&#169</TD>"+
+"<TD><IMG name='ugol4' src='Images/ZX-Spectrum/Dandare1/Table/RightVerticalLine.bmp' width=4 height="+TableHeight+"></TD>"+
+"</TR>"+
+"<TR>"+
+"<TD><IMG name='ugol5' src='Images/ZX-Spectrum/Dandare1/Table/DownLeftAngle.bmp' width=4 height=4></TD>"+
+"<TD><IMG name='ramka2' src='Images/ZX-Spectrum/Dandare1/Table/DownHorizontLine.bmp' width="+TableWidth+" height=4></TD>"+
+"<TD><IMG name='ugol6' src='Images/ZX-Spectrum/Dandare1/Table/DownRightAngle.bmp' width=4 height=4></TD>"+
+"</TR>";
+document.write(ApITable);
+}
+
+function MakeCoordinats()
+{
+document.all["picstar"+objnum].style.left=xminbrowser+Math.round(Math.random()*xmaxbrowser);
+document.all["picstar"+objnum].style.top=yminbrowser+Math.round(Math.random()*256);
+objnum++;
+if(objnum>maxstars){objnum=0};
+setTimeout("MakeCoordinats()",timer1);
+}
+
+function Mayak()
+{
+document.all["light0"].src=Bitmap[changelight].src;
+document.all["light1"].src=Bitmap[changelight].src;
+document.all["light2"].src=Bitmap[changelight].src;
+document.all["light3"].src=Bitmap[changelight].src;
+document.all["light4"].src=Bitmap[changelight].src;
+document.all["light5"].src=Bitmap[changelight].src;
+changelight++;
+if(changelight>kolkadr){changelight=1};
+setTimeout("Mayak()",timer2);
+}
+ 
+function CreatePeizaj(divname,imgname,objnum1,objnum2,mass1,mass2,step1,step2,index)
+{
+//Формируется пейзаж для Меконского города
+for (i=objnum1; i<=objnum2; i=i+1)
+   {
+   ApiImageHTML="<DIV id='"+divname+i+"' STYLE='position: absolute; left:"+ObjectX[mass1]+"; top:"+ObjectY[mass1]+"'>"+
+   "<IMG name='"+imgname+i+"' src='Images/ZX-Spectrum/"+DirFileName[mass2]+index+".bmp'>"+
+   "</DIV>";
+   mass1=mass1+step1;
+   mass2=mass2+step2;
+   document.write(ApiImageHTML);
+   }
+}
+
+function Resize()
+{
+xminbrowser=0;
+xmaxbrowser=document.body.clientWidth-9;
+yminbrowser=0;
+ymaxbrowser=document.body.clientHeight-9;
+}
+
+function init()
+{
+setTimeout("MakeCoordinats()",timer1);
+setTimeout("Mayak()",timer2);
+}
+
+//Создаётся пейзаж
+
+CreateStars();
+CreateGround(0,12,16,27,4,238,19,240,63);
+CreatePeizaj("picpeizaj","city",0,4,2,2,1,1,"");
+CreatePeizaj("picpeizaj","city",5,9,7,2,1,1,"");
+CreatePeizaj("mayak","light",0,5,12,9,1,0,"1");
+LoadImages(9,1,kolkadr);
+CreateTable(xminbrowser,yminbrowser,xmaxbrowser,256);
+alert('Скрипт выполнился');  
+
+function DanTurnRight()
+{
+for (i=1; i<=5; i++)
+   {
+   document.Dan.src='Images/Dan1_'+i+'.bmp';
+   setInterval(500);
+   }
+}
+
+function DanTurnLeft()
+{
+for (i=5; i<=1; i--)
+   {
+   document.Dan.src='Images/Dan1_'+i+'.bmp';
+   setInterval(500);
+   }
+}
+
+  // получить объект из массива и тут же -- его свойство
+    
+  OldX1 = 0;
+  OldX2 = 0;
+  MouseCoords = {
+
+	// X-координата
+	getX: function(e)
+	{
+		if (e.pageX)
+		{
+			return e.pageX;
+		}
+		else if (e.clientX)
+		{
+			return e.clientX+(document.documentElement.scrollLeft || document.body.scrollLeft) - document.documentElement.clientLeft;
+		}
+
+		return 0;
+	},
+
+	// Y-координата
+	getY: function(e)
+	{
+		if (e.pageY)
+		{
+			return e.pageY;
+		}
+		else if (e.clientY)
+		{
+			return e.clientY+(document.documentElement.scrollTop || document.body.scrollTop) - document.documentElement.clientTop;
+		}
+
+		return 0;
+	}
+}
+
+document.onmousemove = function(e)
+{
+	
+	if (!e) e = window.event;
+	var mouseCoordsLayer = document.getElementById('mouse_coords_on_move');
+	OldX1 = MouseCoords.getX(e);
+	//mouseCoordsLayer.innerHTML = '<h2>Координаты во время движения</h2>';
+	//mouseCoordsLayer.innerHTML += '<p>X: '+MouseCoords.getX(e)+'</p>';
+	//mouseCoordsLayer.innerHTML += '<p>Y: '+MouseCoords.getY(e)+'</p>';
+    //mouseCoordsLayer.innerHTML += '<p>OldX1: '+event.target+' '+OldX1+'</p>';
+	
+}
+	
+if (event.which == 3) = function(e)
+{
+OldX2 = MouseCoords.getX(e);
+if (event.table1='Dan'){
+                         if (OldX2>=OldX1){
+						                   document.Dan.src='Images/Dan1_5.png';
+                                           //DanTurnLeft(); 
+										  }
+				     }
+if (event.table1='Dan'){
+                         if (OldX2<OldX1){
+						                  document.Dan.src='Images/Dan1_1.png';
+                 						  //DanTurnRight();
+										 }                
+                     }
+}
+
+document.onclick = function(e)
+{
+	if (!e) e = window.event;
+
+	var mouseCoordsLayer = document.getElementById('mouse_coords_on_click');
+	mouseCoordsLayer.innerHTML = '<h2>Координаты при клике</h2>';
+	mouseCoordsLayer.innerHTML += '<p>X: '+OldX1+'</p>';
+	mouseCoordsLayer.innerHTML += '<p>Y: '+OldX2+'</p>';	
+	}
+
+document.addEventListener("DOMContentLoaded", function () {
+    var X = Y = 0;
+	
+    function move() {
+        document.getElementById('Dan').style.left = X + 'px';
+        document.getElementById('Dan').style.top = Y + 'px';
+    
+	}
+    document.addEventListener("mousemove", function (e) {
+        X = e.clientX;
+        Y = e.clientY;
+	}, false);
+
+    setInterval(move, 100);
+}); 
+
+//-->
+</script>
+
+<div id="mouse_coords_on_move">
+<script type="text/javascript">
+</script>
+</div>
+<div id="mouse_coords_on_click"></div>
+
+</script>
+
+</body>
+</html>
