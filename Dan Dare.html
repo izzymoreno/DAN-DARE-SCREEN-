@@ -1,17 +1,17 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html" charset="windows-1251">
-  <title>Ремейк на Cauldron</title>
+  <title>Dan dare remix</title>
   <style>
    h1 {
-    font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */ 
-    font-size: 250%; /* Размер шрифта в процентах */ 
+    font-family: 'Times New Roman', Times, serif; /* ГѓГ Г°Г­ГЁГІГіГ°Г  ГІГҐГЄГ±ГІГ  */ 
+    font-size: 250%; /* РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С€СЂРёС„С‚ */ 
    color: white;
    } 
    p {
     font-family: Verdana, Arial, Helvetica, sans-serif; 
-    font-size: 11pt; /* Размер шрифта в пунктах */ 
-    color: red; /* Цвет */   
+    font-size: 11pt; /*  */ 
+    color: red; /*  */   
    }
   </style>
   <style>
@@ -36,7 +36,7 @@
 
 
 /**
- * Ремейк игры DAN DARE - 2 
+ * DAN DARE 
  *
  * 
  *
@@ -63,7 +63,7 @@ DirFileName=new Array("Dandare1/Stars/Star1","Dandare1/Stars/Star2","Dandare1/Te
 
 function CreateGround(objnum1,objnum2,objnum3,objnum4,x1,y1,x2,y2,step)
 {
-//Далее создаётся фундамент
+//Р¤СѓРЅРєС†РёСЏ СЃРѕР·РґР°С‘С‚ Р¤Р°РЅС‚Р°СЃС‚РёС‡РµСЃРєРёР№ РїРµР№Р·Р°Р¶ РіРѕСЂРѕРґР° РРЅРѕРїР»Р°РЅРµС‚СЏРЅ
 for (i=objnum1; i<=objnum2; i=i+1)
    {
    ApiImageHTML="<DIV id='picground"+i+"' STYLE='position: absolute; left:"+x1+"; top:"+y1+"'>"+
@@ -81,7 +81,7 @@ for (i=objnum3; i<=objnum4; i=i+1)
    document.write(ApiImageHTML);
    }
 }
-
+//Р¤СѓРЅРєС†РёСЏ СЃРѕР·РґР°С‘С‚ РїРµР№Р·Р°Р¶ РљРѕСЃРјРѕСЃР° РЅР°Рґ РіРѕСЂРѕРґРѕРј РРЅРѕРїР»Р°РЅРµС‚СЏРЅ
 function CreateStars()
 {
 for (i=objnum; i<=maxstars; i=i+1)
@@ -107,14 +107,15 @@ for (i=objnum; i<=maxstars; i=i+1)
    }
 }
 
+//Р¤СѓРЅРєС†РёСЏ Р·Р°РіСЂСѓР¶Р°РµС‚ С„Р°Р№Р»С‹ СЃ РёР·РѕР±СЂР°Р¶РµРЅРёСЏРјРё bmp	
 function LoadImages(objnum,mass1,mass2)
 {
 for (i=mass1; i<=mass2; i=i+1)
    {
    Bitmap[i] = new Image();
    Bitmap[i].src="Images/ZX-Spectrum/"+DirFileName[objnum]+i+".bmp";
-//   alert('Имя файла='+DirFileName[objnum]+i);
-//   alert('Номер ячейки='+i);
+//   alert('Г€Г¬Гї ГґГ Г©Г«Г ='+DirFileName[objnum]+i);
+//   alert('ГЌГ®Г¬ГҐГ° ГїГ·ГҐГ©ГЄГЁ='+i);
    }
 }
 
@@ -165,7 +166,7 @@ setTimeout("Mayak()",timer2);
  
 function CreatePeizaj(divname,imgname,objnum1,objnum2,mass1,mass2,step1,step2,index)
 {
-//Формируется пейзаж для Меконского города
+//Г”Г®Г°Г¬ГЁГ°ГіГҐГІГ±Гї ГЇГҐГ©Г§Г Г¦ Г¤Г«Гї ГЊГҐГЄГ®Г­Г±ГЄГ®ГЈГ® ГЈГ®Г°Г®Г¤Г 
 for (i=objnum1; i<=objnum2; i=i+1)
    {
    ApiImageHTML="<DIV id='"+divname+i+"' STYLE='position: absolute; left:"+ObjectX[mass1]+"; top:"+ObjectY[mass1]+"'>"+
@@ -191,7 +192,7 @@ setTimeout("MakeCoordinats()",timer1);
 setTimeout("Mayak()",timer2);
 }
 
-//Создаётся пейзаж
+//Г‘Г®Г§Г¤Г ВёГІГ±Гї ГЇГҐГ©Г§Г Г¦
 
 CreateStars();
 CreateGround(0,12,16,27,4,238,19,240,63);
@@ -200,7 +201,7 @@ CreatePeizaj("picpeizaj","city",5,9,7,2,1,1,"");
 CreatePeizaj("mayak","light",0,5,12,9,1,0,"1");
 LoadImages(9,1,kolkadr);
 CreateTable(xminbrowser,yminbrowser,xmaxbrowser,256);
-alert('Скрипт выполнился');  
+alert('Г‘ГЄГ°ГЁГЇГІ ГўГ»ГЇГ®Г«Г­ГЁГ«Г±Гї');  
 
 function DanTurnRight()
 {
@@ -220,13 +221,13 @@ for (i=5; i<=1; i--)
    }
 }
 
-  // получить объект из массива и тут же -- его свойство
+  // ГЇГ®Г«ГіГ·ГЁГІГј Г®ГЎГєГҐГЄГІ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  ГЁ ГІГіГІ Г¦ГҐ -- ГҐГЈГ® Г±ГўГ®Г©Г±ГІГўГ®
     
   OldX1 = 0;
   OldX2 = 0;
   MouseCoords = {
 
-	// X-координата
+	// X-ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ 
 	getX: function(e)
 	{
 		if (e.pageX)
@@ -241,7 +242,7 @@ for (i=5; i<=1; i--)
 		return 0;
 	},
 
-	// Y-координата
+	// Y-ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ 
 	getY: function(e)
 	{
 		if (e.pageY)
@@ -263,7 +264,7 @@ document.onmousemove = function(e)
 	if (!e) e = window.event;
 	var mouseCoordsLayer = document.getElementById('mouse_coords_on_move');
 	OldX1 = MouseCoords.getX(e);
-	//mouseCoordsLayer.innerHTML = '<h2>Координаты во время движения</h2>';
+	//mouseCoordsLayer.innerHTML = '<h2>ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГўГ® ГўГ°ГҐГ¬Гї Г¤ГўГЁГ¦ГҐГ­ГЁГї</h2>';
 	//mouseCoordsLayer.innerHTML += '<p>X: '+MouseCoords.getX(e)+'</p>';
 	//mouseCoordsLayer.innerHTML += '<p>Y: '+MouseCoords.getY(e)+'</p>';
     //mouseCoordsLayer.innerHTML += '<p>OldX1: '+event.target+' '+OldX1+'</p>';
@@ -292,7 +293,7 @@ document.onclick = function(e)
 	if (!e) e = window.event;
 
 	var mouseCoordsLayer = document.getElementById('mouse_coords_on_click');
-	mouseCoordsLayer.innerHTML = '<h2>Координаты при клике</h2>';
+	mouseCoordsLayer.innerHTML = '<h2>ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГЇГ°ГЁ ГЄГ«ГЁГЄГҐ</h2>';
 	mouseCoordsLayer.innerHTML += '<p>X: '+OldX1+'</p>';
 	mouseCoordsLayer.innerHTML += '<p>Y: '+OldX2+'</p>';	
 	}
