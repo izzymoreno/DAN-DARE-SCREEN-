@@ -167,7 +167,7 @@ setTimeout("Mayak()",timer2);
  
 function CreatePeizaj(divname,imgname,objnum1,objnum2,mass1,mass2,step1,step2,index)
 {
-//Ôîðìèðóåòñÿ ïåéçàæ äëÿ Ìåêîíñêîãî ãîðîäà
+//Функция создаёт в памяти пейзаж города Инопланетян
 for (i=objnum1; i<=objnum2; i=i+1)
    {
    ApiImageHTML="<DIV id='"+divname+i+"' STYLE='position: absolute; left:"+ObjectX[mass1]+"; top:"+ObjectY[mass1]+"'>"+
@@ -202,7 +202,7 @@ CreatePeizaj("picpeizaj","city",5,9,7,2,1,1,"");
 CreatePeizaj("mayak","light",0,5,12,9,1,0,"1");
 LoadImages(9,1,kolkadr);
 CreateTable(xminbrowser,yminbrowser,xmaxbrowser,256);
-alert('Ñêðèïò âûïîëíèëñÿ');  
+alert('Скрипт выполнился');  
 
 function DanTurnRight()
 {
@@ -222,7 +222,7 @@ for (i=5; i<=1; i--)
    }
 }
 
-  // ïîëó÷èòü îáúåêò èç ìàññèâà è òóò æå -- åãî ñâîéñòâî
+  // Хрень какая-то.
     
   OldX1 = 0;
   OldX2 = 0;
